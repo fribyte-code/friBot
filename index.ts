@@ -28,14 +28,30 @@ console.log(dugnadChannel);
 //Initial setup LOL
 
 function sendDugnadMessage() {
+  let messages = config["messages"] as string[];
+  let message = messages[Math.floor(Math.random() * messages.length)];
+
   client.createPost({
     channel_id: dugnadChannel.id,
-    message: config["messages"][0],
+    message: message,
   });
 }
+console.log(createCronScheduleFromConfig());
+function createCronScheduleFromConfig() {
+  let initial = "0 0";
+  initial += " " + config["timeOfDayToMessage"].toString();
+  initial += " * *";
+  initial +=
+    " " +
+    config["daysToMessage"].reduce(
+      (acc: string, x: Number) => acc + "," + x.toString()
+    );
+  return initial;
+}
 
-let task = cron.schedule("0 0 17 * * 0,2", () => {
+let task = cron.schedule(createCronScheduleFromConfig(), () => {
   sendDugnadMessage();
 });
-
+sendDugnadMessage();
+sendDugnadMessage();
 task.start();
