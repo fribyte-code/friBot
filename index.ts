@@ -2,11 +2,7 @@ import * as cron from "node-cron";
 import config from "./config";
 import { Client4 } from "@mattermost/client";
 
-//Read access token
-const accessTokenPath = "./.token";
-const accessTokenFile = Bun.file(accessTokenPath);
-
-const token = (await accessTokenFile.text()).trim();
+const token = process.env.TOKEN as string;
 
 const client = new Client4();
 client.setUrl(config.url);
