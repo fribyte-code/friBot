@@ -1,0 +1,16 @@
+{
+  "name": "dugnadsbot",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^4.3.0"
+  },
+  "dependencies": {
+    "@mattermost/client": "^9.2.0",
+    "@mattermost/types": "^9.2.0",
+    "node-cron": "^3.0.3"
+  }
+}

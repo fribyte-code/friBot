@@ -1,0 +1,8 @@
+{
+  "checkTimeMinutes": 30,
+
+  "daysToMessage": [0, 2],
+  "timeOfDayToMessage": 12,
+  "url": "https://chat.fribyte.no",
+  "messages": ["Dugnad i morgen friBytere? :60fpsparrot:"]
+}
