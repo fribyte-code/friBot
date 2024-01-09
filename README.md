@@ -1,18 +1,14 @@
 # DugnadsBOT
 
-This repository contians the source code for the dugnadsBOT on mattermost
+This repository contians the source code for the dugnadsBOT on Mattermost.
 
-# Setup:
+## Getting started
 
-This repository uses Bun, this can be aquired [here](https://bun.sh/)
+1. Install [Bun](https://bun.sh/) (JavaScript runtime-alternative to Node.js)
+1. Install node modules: `bun install`
+1. Create a new file `.token` that contains the bots token
+1. Start bot using: `bun run index.ts`
 
-In order to run:
-
-- Install node modules
-  `npm i`
-- Create a file `.token` that contains the bots token
-- `bun run index.ts`
-
-# Configuration file
+## Configuration file
 
 There is a rudamentary config file set up, it is [config.json](./config.json)
