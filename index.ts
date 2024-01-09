@@ -25,8 +25,6 @@ const dugnadChannel = await client.getChannelByName(team.id, "dugnad");
 
 console.log(dugnadChannel);
 
-//Initial setup LOL
-
 function sendDugnadMessage() {
   let messages = config["messages"] as string[];
   let message = messages[Math.floor(Math.random() * messages.length)];
@@ -52,6 +50,5 @@ function createCronScheduleFromConfig() {
 let task = cron.schedule(createCronScheduleFromConfig(), () => {
   sendDugnadMessage();
 });
-sendDugnadMessage();
-sendDugnadMessage();
+
 task.start();
