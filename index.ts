@@ -1,21 +1,11 @@
-import { Client4 } from "@mattermost/client";
 import * as cron from "node-cron";
+import config from "./config";
+import { Client4 } from "@mattermost/client";
 
-//Read config file
-const configPath = "./config.json";
-const configFile = Bun.file(configPath);
-
-const config = await configFile.json();
-console.log(config);
-
-//Read access token
-const accessTokenPath = "./.token";
-const accessTokenFile = Bun.file(accessTokenPath);
-
-const token = (await accessTokenFile.text()).trim();
+const token = process.env.TOKEN as string;
 
 const client = new Client4();
-client.setUrl(config["url"]);
+client.setUrl(config.url);
 
 client.setToken(token);
 
@@ -26,8 +16,8 @@ const dugnadChannel = await client.getChannelByName(team.id, "dugnad");
 console.log(dugnadChannel);
 
 function sendDugnadMessage() {
-  let messages = config["messages"] as string[];
-  let message = messages[Math.floor(Math.random() * messages.length)];
+  const messages = config.messages;
+  const message = messages[Math.floor(Math.random() * messages.length)];
 
   client.createPost({
     channel_id: dugnadChannel.id,
@@ -35,19 +25,15 @@ function sendDugnadMessage() {
   });
 }
 console.log(createCronScheduleFromConfig());
+
+/**
+ * @returns cron like: `0 17 * * 0,2`
+ */
 function createCronScheduleFromConfig() {
-  let initial = "0 0";
-  initial += " " + config["timeOfDayToMessage"].toString();
-  initial += " * *";
-  initial +=
-    " " +
-    config["daysToMessage"].reduce(
-      (acc: string, x: Number) => acc + "," + x.toString()
-    );
-  return initial;
+  return `0 ${config.timeOfDayToMessage} * * ${config.daysToMessage.join(",")}`;
 }
 
-let task = cron.schedule(createCronScheduleFromConfig(), () => {
+const task = cron.schedule(createCronScheduleFromConfig(), () => {
   sendDugnadMessage();
 });
 

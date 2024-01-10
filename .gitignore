@@ -163,4 +163,5 @@ x64
 
 **/.verdaccio-db.json
 
-.token
+.env
+!.env.example
