@@ -11,18 +11,21 @@ client.setToken(token);
 
 const team = await client.getTeamByName("friByte");
 
-const dugnadChannel = await client.getChannelByName(team.id, "dugnad");
+const dugnadChannel = await client.getChannelByName(team.id, process.env.DEV ? "bot-test": "dugnad");
 
 console.log(dugnadChannel);
 
-function sendDugnadMessage() {
+async function sendDugnadMessage() {
   const messages = config.messages;
   const message = messages[Math.floor(Math.random() * messages.length)];
 
-  client.createPost({
-    channel_id: dugnadChannel.id,
+  let post = await client.createPost({
+    channel_id: dugnadChannel.id, 
     message: message,
   });
+
+  client.addReaction(post.user_id, post.id, "white_check_mark")
+  client.addReaction(post.user_id, post.id, "x")
 }
 console.log(createCronScheduleFromConfig());
 
