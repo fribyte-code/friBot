@@ -1,6 +1,6 @@
-# DugnadsBOT
+# friBot
 
-This repository contians the source code for the dugnadsBOT on Mattermost.
+This repository contians the source code for the friBot on Mattermost.
 
 ## Getting started
 
