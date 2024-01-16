@@ -2,6 +2,9 @@
   "name": "dugnadsbot",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun run serve index.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
