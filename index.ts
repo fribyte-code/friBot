@@ -42,4 +42,5 @@ function createCronScheduleFromConfig() {
 const task = cron.schedule(createCronScheduleFromConfig(), () => {
   sendDugnadMessage();
 });
+sendDugnadMessage();
 task.start();
