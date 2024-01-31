@@ -11,12 +11,14 @@ type happening = {
 /**
  * @returns cron like: `0 17 * * 0,2`
  */
-function createCronScheduleFromHappeningConfig(happening:happening) {
+function createCronScheduleFromHappening(happening:happening) {
   return `0 ${happening.timeOfDayToMessage} * * ${happening.daysToMessage.join(",")}`;
 }
 
-const dugnadCronTask = cron.schedule(createCronScheduleFromHappeningConfig(config.happenings.dugnad), () => {
-  sendMessageWithReactions(config.happenings.dugnad.messages);
-});
-
-dugnadCronTask.start();
+export function startCronTasks() {
+  config.happenings.forEach((happening:happening) => {
+    cron.schedule(createCronScheduleFromHappening(happening), () => {
+      sendMessageWithReactions(happening.messages);
+    })
+  });
+}

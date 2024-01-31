@@ -1,6 +1,5 @@
 import { initMattermostClient } from "./client";
-
-import "./cron"
+import { startCronTasks } from "./cron";
 
 const client = initMattermostClient();
 const team = await client.getTeamByName("friByte");
@@ -18,7 +17,4 @@ export async function sendMessageWithReactions(possibleMessages:string[]) {
   client.addReaction(post.user_id, post.id, "x")
 }
 
-let post = client.createPost({
-  channel_id: dugnadChannel.id, 
-  message: "jeg lever!",
-} as any);
+startCronTasks();

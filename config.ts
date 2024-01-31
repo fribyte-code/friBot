@@ -1,7 +1,8 @@
 export default {
   clientURL: "https://chat.fribyte.no",
-  happenings: {
-    dugnad: {
+  happenings:  [
+    {
+      title: "Dugnad",
       daysToMessage: [0, 2], // Sunday and Tuesday
       timeOfDayToMessage: 17, // 5pm
       messages: [
@@ -10,7 +11,8 @@ export default {
       ],
     },
     //TODO - see issue #1
-    // social: {
+    // {
+    //   title: "Social",
     //   daysToMessage: [0, 2], // Sunday and Tuesday
     //   timeOfDayToMessage: 17, // 5pm
     //   messages: [
@@ -18,5 +20,5 @@ export default {
     //     "Dugnad i morgen mennesker og roboter?",
     //   ],
     // }
-  }
+  ]
 };
