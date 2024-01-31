@@ -2,6 +2,7 @@ import { initMattermostClient } from "./client";
 import { startCronTasks } from "./cron";
 
 const client = initMattermostClient();
+console.info("The bot is running")
 const team = await client.getTeamByName("friByte");
 
 const dugnadChannel = await client.getChannelByName(team.id, process.env.DEV ? "bot-test": "dugnad");

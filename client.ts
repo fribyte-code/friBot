@@ -8,7 +8,7 @@ export function initMattermostClient() {
   
   const token = process.env.TOKEN;
   if (typeof token  === "undefined") {
-    console.log("api token is undefined, did you forget to add TOKEN env variable? Check docs")
+    throw Error("API bot token is undefined, did you forget to add TOKEN env variable?")
   } else {
     client.setToken(token);
   }

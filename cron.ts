@@ -21,4 +21,5 @@ export function startCronTasks() {
       sendMessageWithReactions(happening.messages);
     })
   });
+  console.info("Cron tasks started")
 }
