@@ -3,7 +3,7 @@ export default {
   happenings:  [
     {
       title: "Dugnad",
-      daysToMessage: [0, 2], // Sunday and Tuesday
+      daysToMessage: [1, 3], // Monday and Wednesday
       timeOfDayToMessage: 17, // 5pm
       messages: [
         "Dugnad i morgen friBytere? :60fpsparrot:",
