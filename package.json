@@ -6,14 +6,15 @@
     "build": "bun run serve index.ts"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "@mattermost/types": "^9.2.0",
+    "@types/node-cron": "^3.0.11"
   },
   "peerDependencies": {
     "typescript": "^4.3.0"
   },
   "dependencies": {
     "@mattermost/client": "^9.2.0",
-    "@mattermost/types": "^9.2.0",
     "node-cron": "^3.0.3"
   }
 }
