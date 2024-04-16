@@ -21,5 +21,6 @@ export function startCronTasks() {
       sendMessageWithReactions(happening.messages);
     })
   });
-  console.info("Cron tasks started")
+
+	console.info(new Date().toLocaleString(), "Cron tasks created");
 }

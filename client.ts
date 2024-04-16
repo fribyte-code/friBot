@@ -1,7 +1,7 @@
 import { Client4 } from "@mattermost/client";
 import config from "./config";
 
-export function initMattermostClient() {
+export function createMattermostClient() {
   const client = new Client4();
   
   client.setUrl(config.clientURL);
@@ -12,6 +12,8 @@ export function initMattermostClient() {
   } else {
     client.setToken(token);
   }
+
+	console.info(new Date().toLocaleString(), "Mattermost client created")
 
   return client;
 }
