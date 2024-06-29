@@ -9,10 +9,10 @@ type happening = {
 }
 
 /**
- * @returns cron like: `0 17 * * 0,2`
+ * @returns cron like: `0 17 * 1-6,8-12 0,2`
  */
 function createCronScheduleFromHappening(happening:happening) { 
-  return `0 ${happening.timeOfDayToMessage} * * ${happening.daysToMessage.join(",")}`;
+  return `0 ${happening.timeOfDayToMessage} * 1-6,8-12 ${happening.daysToMessage.join(",")}`;
 }
 
 export function startCronTasks() {
@@ -24,8 +24,8 @@ export function startCronTasks() {
     })
   });
 
-  // cron: every day of the first week at 18:00
-  cron.schedule("0 18 1-7 * *", () => {
+  // cron: every day of the first week at 18:00, not in july
+  cron.schedule("0 18 1-7 1-6,8-12 *", () => {
     // note that this is UTC, but Europe/Oslo's 18:00 
     // is always the same weekday as corresponding UTC ts
     const currentWeekDay = new Date().getDay();
