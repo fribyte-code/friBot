@@ -85,7 +85,8 @@ export async function sendMonthlyAttendanceStats() {
 	await client.createPost({
 		channel_id: dugnadChannel.id,
 		message: 
-			"### :confusedparrot: Statistikk for deltakelse på dugnad :confusedparrot:\n" +
+			"#### :confusedparrot: Statistikk for deltakelse på dugnad :confusedparrot:\n" +
+			"#### // Statistics for attendance at dugnad \n" +
 			markdownTable([["Medlem", "Siste år", "Siste måned"]].concat(attendanceEntries)),
 	} as Post);
 
