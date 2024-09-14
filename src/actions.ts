@@ -1,17 +1,15 @@
-import { Post } from "@mattermost/types/posts";
+import type { Client4 } from "@mattermost/client";
+import type { Post } from "@mattermost/types/posts";
 import { markdownTable } from "markdown-table";
 
-import { createMattermostClient } from "./client";
-import { startCronTasks } from "./cron";
+import config from "./config";
 
-if (!process.env.DEV) startCronTasks();
+export async function sendDugnadInvite(client:Client4) {
+    const team = await client.getTeamByName("friByte");
+    const dugnadChannelName = process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
+	const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
+    const possibleMessages = config.dugnad.messages
 
-const client = createMattermostClient();
-const team = await client.getTeamByName("friByte");
-const botUser = await client.getUserByUsername("fribot");
-const dugnadChannel = await client.getChannelByName(team.id, process.env.DEV ? "bot-test" : "dugnad");
-
-export async function sendMessageWithReactions(possibleMessages:string[]) {
 	const message = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
 	const post = await client.createPost({
 		channel_id: dugnadChannel.id,
@@ -21,10 +19,15 @@ export async function sendMessageWithReactions(possibleMessages:string[]) {
 	client.addReaction(post.user_id, post.id, "white_check_mark");
 	client.addReaction(post.user_id, post.id, "x");
 
-	console.info(new Date().toLocaleString(), "Created dugnad post");
+	console.info(new Date().toLocaleString(), `Created dugnad post in ${dugnadChannelName} channel`);
 }
 
-export async function sendMonthlyAttendanceStats() {
+export async function sendDugnadAttendanceStats(client:Client4) {
+    const team = await client.getTeamByName("friByte");
+    const dugnadChannelName = process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
+    const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
+    const botUser = await client.getUserByUsername("fribot");
+
 	const monthlyUserAttendance = new Map();
 
 	let lastMonth = new Date();
@@ -90,5 +93,5 @@ export async function sendMonthlyAttendanceStats() {
 			markdownTable([["Medlem", "Siste år", "Siste måned"]].concat(attendanceEntries)),
 	} as Post);
 
-	console.info(new Date().toLocaleString(), "Created monthly attendance post");
+	console.info(new Date().toLocaleString(), `Created monthly attendance post in ${dugnadChannelName} channel`);
 }

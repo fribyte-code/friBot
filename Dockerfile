@@ -8,4 +8,4 @@ COPY . .
 RUN bun install
 
 # run the app
-ENTRYPOINT [ "bun", "run", "index.ts" ]
+ENTRYPOINT [ "bun", "run", "start" ]
