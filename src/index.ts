@@ -6,6 +6,3 @@ import { startCronTasks } from "./cron";
 const client = createMattermostClient();
 
 if (config.isProd) startCronTasks(client);
-
-await sendDugnadInvite(client)
-await sendDugnadAttendanceStats(client)
