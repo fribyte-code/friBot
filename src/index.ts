@@ -1,8 +1,11 @@
+import { sendDugnadAttendanceStats, sendDugnadInvite } from "./actions";
 import { createMattermostClient } from "./client";
+import config from "./config";
 import { startCronTasks } from "./cron";
 
 const client = createMattermostClient();
 
-if (process.env.NODE_ENV === "production") startCronTasks(client);
+if (config.isProd) startCronTasks(client);
 
-console.log(process.env.NODE_ENV)
+await sendDugnadInvite(client)
+await sendDugnadAttendanceStats(client)

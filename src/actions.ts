@@ -6,9 +6,9 @@ import config from "./config";
 
 export async function sendDugnadInvite(client:Client4) {
     const team = await client.getTeamByName("friByte");
-    const dugnadChannelName = process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
+    const dugnadChannelName = config.dugnad.channelName;
 	const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
-    const possibleMessages = config.dugnad.messages
+    const possibleMessages = config.dugnad.messages;
 
 	const message = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
 	const post = await client.createPost({
@@ -24,7 +24,7 @@ export async function sendDugnadInvite(client:Client4) {
 
 export async function sendDugnadAttendanceStats(client:Client4) {
     const team = await client.getTeamByName("friByte");
-    const dugnadChannelName = process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
+    const dugnadChannelName = config.dugnad.channelName;
     const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
     const botUser = await client.getUserByUsername("fribot");
 
