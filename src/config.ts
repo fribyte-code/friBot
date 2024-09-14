@@ -1,5 +1,14 @@
 export default {
 	clientURL: "https://chat.fribyte.no",
+	get channelName() {
+		return process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
+	},
+	get isProd() {
+		return process.env.NODE_ENV === "production";
+	},
+	get token() {
+		return process.env.TOKEN ?? throw new Exception("Token is not defined in environment. Add 'TOKEN=<YOUR TOKEN>' to the file '.env' in root folder.");
+	}
 	dugnad: {
 		daysToMessage: [1, 3], // Monday and Wednesday
 		timeOfDayToMessage: 17, // 5pm
