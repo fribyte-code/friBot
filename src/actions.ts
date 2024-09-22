@@ -5,12 +5,12 @@ import { markdownTable } from "markdown-table";
 import config from "./config";
 
 export async function sendDugnadInvite(client:Client4) {
-    const team = await client.getTeamByName("friByte");
+    const team = await client.getTeamByName(config.mattermost.teamName);
     const dugnadChannelName = config.dugnad.channelName;
 	const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
     const possibleMessages = config.dugnad.messages;
-
 	const message = possibleMessages[Math.floor(Math.random() * possibleMessages.length)];
+
 	const post = await client.createPost({
 		channel_id: dugnadChannel.id,
 		message: message,
@@ -23,7 +23,7 @@ export async function sendDugnadInvite(client:Client4) {
 }
 
 export async function sendDugnadAttendanceStats(client:Client4) {
-    const team = await client.getTeamByName("friByte");
+    const team = await client.getTeamByName(config.mattermost.teamName);
     const dugnadChannelName = config.dugnad.channelName;
     const dugnadChannel = await client.getChannelByName(team.id, dugnadChannelName);
     const botUser = await client.getUserByUsername("fribot");

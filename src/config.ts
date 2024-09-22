@@ -1,17 +1,17 @@
 export default {
-	clientURL: "https://chat.fribyte.no",
-	get isProd() {
-		return process.env.NODE_ENV === "production";
-	},
-	get token() {
-		const token = process.env.TOKEN
-		if (token === undefined) throw Error("API bot token is undefined, did you forget to add TOKEN env variable?");
-		return token
+	get isProd() { return process.env.NODE_ENV === "production"; },
+	mattermost: {
+		clientURL: "https://chat.fribyte.no",
+		teamName: "friByte",
+		get token() {
+			const token = process.env.TOKEN;
+			if (token === undefined)
+				throw Error("Bot token is undefined, did you forget to add TOKEN env variable?");
+			return token;
+		},
 	},
 	dugnad: {
-		get channelName() {
-			return process.env.NODE_ENV === "production" ? "dugnad" : "bot-test";
-		},
+		get channelName() { return process.env.NODE_ENV === "production" ? "dugnad" : "bot-test"; },
 		daysToMessage: [1, 3], // Monday and Wednesday
 		timeOfDayToMessage: 17, // 5pm
 		messages: [
