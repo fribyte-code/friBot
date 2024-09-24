@@ -1,4 +1,4 @@
-import { sendDugnadAttendanceStats, sendDugnadInvite } from "./actions";
+import * as actions from "./actions";
 import { createMattermostClient } from "./client";
 import config from "./config";
 import { startCronTasks } from "./cron";
