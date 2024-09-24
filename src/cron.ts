@@ -8,7 +8,7 @@ export function startCronTasks(client:Client4) {
 	// Weekly dugnad invitations
 	// cron: At timeOfDay on all daysToMessage every week, not in july
 	cron.schedule(`0 ${config.dugnad.timeOfDayToMessage} * 1-6,8-12 ${config.dugnad.daysToMessage.join(",")}`, () => {
-   		botActions.sendDugnadInvite(client);
+   		botActions.sendSocialInvite(client);
 	}, {
 		timezone: "Europe/Oslo"
 	});
@@ -22,6 +22,14 @@ export function startCronTasks(client:Client4) {
 		if (currentWeekDay !== 2) // not tuesday
 			return;
 		botActions.sendDugnadAttendanceStats(client);
+	}, {
+    	timezone: "Europe/Oslo"
+	});
+	
+	// Weekly social invitation
+	// cron: At timeOfDay on all daysToMessage every week, not in july
+	cron.schedule(`0 ${config.social.timeOfDayToMessage}, 1-6,8-12 ${config.social.daysToMessage}`, () => {
+		botActions.sendSocialInvite(client);
 	}, {
     	timezone: "Europe/Oslo"
 	});

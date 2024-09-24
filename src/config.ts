@@ -20,5 +20,11 @@ export default {
 			"I morgen er det dugnad! Kommer du?\n// Tomorrow is time for dugnad! Are you coming?",
 			"Dugnad i morra, be there or be square\n// Dugnad tomorrow, be there or be square",
 		],
+	},
+	social: {
+		get channelName() { return process.env.NODE_ENV === "production" ? "social" : "bot-test"; },
+		daysToMessage: [4], // Thursdays
+		timeOfDayToMessage: 20, // 8pm
+		message: "Hallisiken noe sisialt eller?? Reager med hva  du  ønsker\n// Helloski do  something social or. React with what you want\n :video_game: :spiral_note_pad: :beers:",
 	}
 };

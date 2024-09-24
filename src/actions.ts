@@ -2,7 +2,7 @@ import type { Client4 } from "@mattermost/client";
 import type { Post } from "@mattermost/types/posts";
 import { markdownTable } from "markdown-table";
 
-import config from "./config";
+import config from "./config"
 
 export async function sendDugnadInvite(client:Client4) {
     const team = await client.getTeamByName(config.mattermost.teamName);
@@ -95,3 +95,21 @@ export async function sendDugnadAttendanceStats(client:Client4) {
 
 	console.info(new Date().toLocaleString(), `Created monthly attendance post in ${dugnadChannelName} channel`);
 }
+
+export async function sendSocialInvite(client:Client4) {
+    const team = await client.getTeamByName(config.mattermost.teamName);
+    const socialChannelName = config.social.channelName;
+	const socialChannel = await client.getChannelByName(team.id, socialChannelName);
+    const message = config.social.message;
+
+	const post = await client.createPost({
+		channel_id: socialChannel.id,
+		message: message,
+	} as Post);
+
+	client.addReaction(post.user_id, post.id, "video_game");
+	client.addReaction(post.user_id, post.id, "beers");
+	client.addReaction(post.user_id, post.id, "spiral_note_pad");
+
+	console.info(new Date().toLocaleString(), `Created social post in ${socialChannelName} channel`);
+}	
