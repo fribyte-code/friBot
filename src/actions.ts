@@ -90,7 +90,7 @@ export async function sendDugnadAttendanceStats(client:Client4) {
 		message: 
 			"#### :confusedparrot: Statistikk for deltakelse på dugnad :confusedparrot:\n" +
 			"#### // Statistics for attendance at dugnad \n" +
-			markdownTable([["Medlem", "Siste år", "Siste måned"]].concat(attendanceEntries)),
+			markdownTable([["Username", "In " + currentYear.toString() , "Past month"]].concat(attendanceEntries)),
 	} as Post);
 
 	console.info(new Date().toLocaleString(), `Created monthly attendance post in ${dugnadChannelName} channel`);

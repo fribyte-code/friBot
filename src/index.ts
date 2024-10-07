@@ -5,4 +5,8 @@ import { startCronTasks } from "./cron";
 
 const client = createMattermostClient();
 
-if (config.isProd) startCronTasks(client);
+if (config.isProd) {
+    startCronTasks(client)
+} else {
+    //? Debug code goes here
+};
