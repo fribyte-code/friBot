@@ -28,7 +28,7 @@ export function startCronTasks(client:Client4) {
 	
 	// Weekly social invitation
 	// cron: At timeOfDay on all daysToMessage every week, not in july
-	cron.schedule(`0 ${config.social.timeOfDayToMessage}, 1-6,8-12 ${config.social.daysToMessage}`, () => {
+	cron.schedule(`0 ${config.social.timeOfDayToMessage}, 1-6,8-12 ${config.social.daysToMessage.join(",")}`, () => {
 		botActions.sendSocialInvite(client);
 	}, {
     	timezone: "Europe/Oslo"
