@@ -8,7 +8,7 @@ export function startCronTasks(client:Client4) {
 	// Weekly dugnad invitations
 	// cron: At timeOfDay on all daysToMessage every week, not in july
 	cron.schedule(`0 ${config.dugnad.timeOfDayToMessage} * 1-6,8-12 ${config.dugnad.daysToMessage.join(",")}`, () => {
-   		botActions.sendSocialInvite(client);
+   		botActions.sendDugnadInvite(client);
 	}, {
 		timezone: "Europe/Oslo"
 	});
