@@ -32,30 +32,31 @@ const generalMessages: GeneralMessageConfig[] = [
     ],
     reactions: ["video_game", "spiral_note_pad", "beers"],
   },
-  {
-    botMessageName: "drunkBot",
-    get channelName() {
-      return process.env.NODE_ENV === "production" ? "social" : "bot-test";
-    },
-    daysToMessage: [6], // Saturdays
-    timeOfDayToMessage: 2, // 2am
-    messages: ["Hvor er fu? :beers:"],
-  },
-  {
-    botMessageName: "drunkBot",
-    get channelName() {
-      return process.env.NODE_ENV === "production" ? "social" : "bot-test";
-    },
-    daysToMessage: [6], // Saturdays
-    timeOfDayToMessage: 4, // 2am
-    messages: [
-      "Hvor er fu? :beers:",
-      "Noen uuuuute? :stuck_out_tongue_winking_eye:",
-      "KEEEEEDEEGIIIIIISS?!?!? :pedrodance: :heart:",
-      "Shit! Serverparken brenner! :fire:",
-      "Can I pull the cable labeled 'DO NOT REMOVE' in the server room?",
-    ],
-  },
+  // DrunkBot go home you have asked to many times now without any response
+  // {
+  //   botMessageName: "drunkBot",
+  //   get channelName() {
+  //     return process.env.NODE_ENV === "production" ? "social" : "bot-test";
+  //   },
+  //   daysToMessage: [6], // Saturdays
+  //   timeOfDayToMessage: 2, // 2am
+  //   messages: ["Hvor er fu? :beers:"],
+  // },
+  // {
+  //   botMessageName: "drunkBot",
+  //   get channelName() {
+  //     return process.env.NODE_ENV === "production" ? "social" : "bot-test";
+  //   },
+  //   daysToMessage: [6], // Saturdays
+  //   timeOfDayToMessage: 4, // 2am
+  //   messages: [
+  //     "Hvor er fu? :beers:",
+  //     "Noen uuuuute? :stuck_out_tongue_winking_eye:",
+  //     "KEEEEEDEEGIIIIIISS?!?!? :pedrodance: :heart:",
+  //     "Shit! Serverparken brenner! :fire:",
+  //     "Can I pull the cable labeled 'DO NOT REMOVE' in the server room?",
+  //   ],
+  // },
 ];
 
 export default {
