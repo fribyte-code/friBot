@@ -6,9 +6,9 @@ import config from "./config";
 
 export function startCronTasks(client: Client4) {
   // Monthly attendance statistics
-  // cron: every day of the first week at 18:00, not in july
+  // cron: every day of the first week at 18:00, not in june or july because vacation
   cron.schedule(
-    "0 18 1-7 1-6,8-12 *",
+    "0 18 1-7 1-5,8-12 *",
     () => {
       // note that this is UTC, but Europe/Oslo's 18:00
       // is always the same weekday as corresponding UTC ts
