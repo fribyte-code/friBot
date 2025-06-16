@@ -38,7 +38,7 @@ export function startCronTasks(client: Client4) {
       message.cronSentence ??
         `0 ${
           message.timeOfDayToMessage
-        } * 1-6,8-12 ${message.daysToMessage?.join(",")}`,
+        } * 1-5,8-12 ${message.daysToMessage?.join(",")}`,
       () => {
         botActions.sendGeneralMessage(client, message);
       }
