@@ -92,6 +92,15 @@ export async function sendDugnadAttendanceStats(client: Client4) {
     return tuple2[1] - tuple1[1];
   });
 
+  // Don't post if there's no attendance data
+  if (attendanceEntries.length === 0) {
+    console.info(
+      new Date().toLocaleString(),
+      `No attendance data to post in ${dugnadChannelName} channel`
+    );
+    return;
+  }
+
   await client.createPost({
     channel_id: dugnadChannel.id,
     message:

@@ -20,18 +20,20 @@ const generalMessages: GeneralMessageConfig[] = [
     ],
     reactions: ["white_check_mark", "x"],
   },
-  {
-    botMessageName: "social",
-    get channelName() {
-      return process.env.NODE_ENV === "production" ? "social" : "bot-test";
-    },
-    daysToMessage: [4], // Thursdays
-    timeOfDayToMessage: 20, // 8pm
-    messages: [
-      "Hallisiken kedegis? Hypp på noe sosialt eller?? Reager med hva  du  ønsker\n// Helloski do  something social or? React with what you want\n :video_game: :spiral_note_pad: :beers:",
-    ],
-    reactions: ["video_game", "spiral_note_pad", "beers"],
-  },
+  // commented out due to spam
+  // {
+  //   botMessageName: "social",
+  //   get channelName() {
+  //     return process.env.NODE_ENV === "production" ? "social" : "bot-test";
+  //   },
+  //   daysToMessage: [4], // Thursdays
+  //   timeOfDayToMessage: 20, // 8pm
+  //   messages: [
+  //     "Hallisiken kedegis? Hypp på noe sosialt eller?? Reager med hva  du  ønsker\n// Helloski do  something social or? React with what you want\n :video_game: :spiral_note_pad: :beers:",
+  //   ],
+  //   reactions: ["video_game", "spiral_note_pad", "beers"],
+  // },
+
   // DrunkBot go home you have asked to many times now without any response
   // {
   //   botMessageName: "drunkBot",
